@@ -1,7 +1,12 @@
-import { Controller } from '@nestjs/common';
-import { Module01ArraysStringsService } from './module-01-arrays-strings.service';
+import { Controller, Get, Param } from '@nestjs/common';
+import { ArraysStringsService } from './module-01-arrays-strings.service';
 
-@Controller('module-01-arrays-strings')
-export class Module01ArraysStringsController {
-  constructor(private readonly module01ArraysStringsService: Module01ArraysStringsService) {}
+@Controller('m1-arrays-strings')
+export class ArraysStringsController {
+  constructor(private readonly service: ArraysStringsService) {}
+
+  @Get('palindrome/:word') 
+  checkPalindrome(@Param('word') word: string) {
+    return this.service.isPalindrome(word);
+  }
 }
