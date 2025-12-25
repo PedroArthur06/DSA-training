@@ -28,4 +28,37 @@ export class ArraysStringsService {
     // Se o loop terminou sem retornar false, então é palíndromo.
     return `A palavra "${text}" É um palíndromo!`;
   }
+
+  // Método que inverte uma lista
+  private reverse(nums: number[], start: number, end: number): void {
+    while (start < end) {
+      // Troca os valores de lugar
+      const temp = nums[start];
+      nums[start] = nums[end];
+      nums[end] = temp;
+
+      // Move os indexes
+      start++;
+      end--;
+    }
+  }
+
+  rotateArray(list: number[], k: number): number[] {
+
+    // Proteção: Se k for maior que o tamanho da lista (ex: lista 5, k 7)
+    // 7 rotações é igual a 2 rotações. O resto da divisão resolve isso.
+    k = k % list.length;
+
+    // Inverte o array inteiro
+    this.reverse(list, 0, list.length - 1);
+
+    // Inverte os primeiros K números
+    this.reverse(list, 0, k - 1);
+
+    // Inverte o resto dos números
+    this.reverse(list, k, list.length - 1);
+
+    // Retorna a própria lista 
+    return list;
+  }
 }
