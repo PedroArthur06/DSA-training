@@ -45,7 +45,7 @@ export class ArraysStringsService {
 
   rotateArray(list: number[], k: number): number[] {
 
-    // Proteção: Se k for maior que o tamanho da lista (ex: lista 5, k 7)
+    // Se k for maior que o tamanho da lista (ex: lista 5, k 7)
     // 7 rotações é igual a 2 rotações. O resto da divisão resolve isso.
     k = k % list.length;
 
