@@ -61,4 +61,21 @@ export class ArraysStringsService {
     // Retorna a própria lista 
     return list;
   }
+
+  // Método que encontra dois números que somados resultam em target
+  twoSum(nums: number[], target: number): number[] {
+    const numToIndex = new Map<number, number>();
+    for (let i = 0; i < nums.length; i++) {
+      // Calcula o complemento
+      const complement = target - nums[i];
+      // Se o complemento estiver no map, retorna os indexes
+      if (numToIndex.has(complement)) {
+        return [numToIndex.get(complement)!, i];
+      }
+      // Se não, adiciona o número e seu index ao map
+      numToIndex.set(nums[i], i);
+    }
+    throw new Error("Nenhum par encontrado");
+  }
 }
+
